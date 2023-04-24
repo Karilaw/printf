@@ -13,5 +13,6 @@ char *_uitoa(unsigned int n);
 char *_uitoa_base(unsigned int n, unsigned int base);
 int print_int_helper(int n);
 int print_int(va_list args);
+char *conv_to_binary(unsigned int num);
 
 #endif
