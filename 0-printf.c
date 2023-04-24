@@ -26,7 +26,7 @@ int _printf(const char *format, ...)
 			format++;
 			if (*format == 'c')
 			{
-				char c = (char) va_arg(args,int);
+				char = (char) va_arg(args,int);
 				putchar('c');
 				counter++;
 			}
