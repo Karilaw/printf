@@ -6,6 +6,7 @@
  */
 int _printf(const char *format, ...)
 {
+<<<<<<< HEAD
 	va_list args;
 	int counter = 0;
 	char *s;
@@ -126,6 +127,9 @@ int _printf(const char *format, ...)
 	}
 	va_end(args);
 	return (counter);
+=======
+        return (_putchar(va_arg(args, int)));
+>>>>>>> 8bcebe6b9ca49487e61c2d243a88483eb1e9374e
 }
 /**
  * _itoa - converts an integer to a string
@@ -136,6 +140,7 @@ int _printf(const char *format, ...)
 
 char *_itoa(int n)
 {
+<<<<<<< HEAD
 	char *str;
 	int neg = 0, len;
 	unsigned int num;
@@ -174,6 +179,17 @@ char *_itoa(int n)
 		i++;
 	}
 	return (str);
+=======
+        int i;
+        int count = 0;
+        char *str = va_arg(args, char *);
+
+        for (i = 0; str[i] != '\0'; i++)
+        {
+                count += _putchar(str[i]);
+        }
+        return (count);
+>>>>>>> 8bcebe6b9ca49487e61c2d243a88483eb1e9374e
 }
 /**
  * _uitoa - converts an unsigned integer to a string
@@ -183,6 +199,7 @@ char *_itoa(int n)
  */
 char *_uitoa(unsigned int n)
 {
+<<<<<<< HEAD
 	char *str;
 	int len = 0;
 	unsigned int num;
@@ -242,4 +259,35 @@ char *_uitoa_base(unsigned int n, unsigned int base)
 		n /= base;
 	}
 	return (str);
+=======
+        va_list args;
+        int count = 0;
+        int i;
+
+        va_start(args, format);
+
+        for (i = 0; format[i] != '\0'; i++)
+        {
+                if (format[i] == '%')
+                {
+                        i++;
+                        if (format[i] == 'c')
+                        {
+                                count += print_char(args);
+                        }
+                        else if (format[i] == 's')
+                        {
+                                count += print_string(args);
+                        }
+                        else if (format[i] == '%')
+                        {
+                                count += _putchar(format[i]);
+                        }
+                }
+                else
+                        count += _putchar(format[i]);
+                        }
+        va_end(args);
+        return (count);
+>>>>>>> 8bcebe6b9ca49487e61c2d243a88483eb1e9374e
 }
