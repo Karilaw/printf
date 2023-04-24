@@ -6,6 +6,7 @@
 #include <string.h>
 #include <unistd.h>
 
+int _putchar(char c);
 int _printf(const char *format, ...);
 char *_itoa(int n);
 char *_uitoa(unsigned int n);
