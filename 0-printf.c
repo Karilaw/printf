@@ -114,7 +114,6 @@ int _printf(const char *format, ...)
 					putchar(mem_add[i]);
 					counter++;
 				}
-				free(mem_add);
 			}
 
 			else if (*format == 'b')
@@ -229,12 +228,12 @@ char *_uitoa(unsigned int n)
  *
  * Return: pointer to the resulting string
  */
-char *_uitoa_base(unsigned int n, unsigned int base)
+char *_uitoa_base(unsigned long n, unsigned int base)
 {
 	char *str;
 	int len = 0;
 	unsigned int tmp = n;
-	char *digits = "0123456789abcdef";
+	char *digits = "0123456789abcdefghijklmnopqrstuvwxyz";
 
 	if (n == 0)
 		len = 1;
