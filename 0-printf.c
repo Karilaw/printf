@@ -1,3 +1,5 @@
+#ifndef _PRINTF0_H
+#define _PRINTF0_H
 #include "main.h"
 
 /**
@@ -63,3 +65,4 @@ int _printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
+#endif
