@@ -114,6 +114,7 @@ int _printf(const char *format, ...)
 					putchar(mem_add[i]);
 					counter++;
 				}
+				free(mem_add);
 			}
 
 			else if (*format == 'b')
@@ -218,40 +219,6 @@ char *_uitoa(unsigned int n)
 	{
 	    str[i--] = (num % 10) + '0';
 	    num /= 10;
-	}
-	return (str);
-}
-/**
- * _uitoa_base - converts an unsigned integer to a string in a specified base
- * @n: unsigned integer to convert
- * @base: base to use for conversion
- *
- * Return: pointer to the resulting string
- */
-char *_uitoa_base(unsigned long n, unsigned int base)
-{
-	char *str;
-	int len = 0;
-	unsigned int tmp = n;
-	char *digits = "0123456789abcdefghijklmnopqrstuvwxyz";
-
-	if (n == 0)
-		len = 1;
-	while (tmp > 0)
-	{
-		len++;
-		tmp /= base;
-	}
-	str = malloc(sizeof(char) * (len + 1));
-	if (!str)
-		return (NULL);
-	str[len] = '\0';
-	if (n == 0)
-		str[0] = '0';
-	while (n > 0)
-	{
-		str[--len] = digits[n % base];
-		n /= base;
 	}
 	return (str);
 }
