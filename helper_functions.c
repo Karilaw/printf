@@ -34,15 +34,4 @@ char *conv_to_binary(unsigned int num)
 	}
 
 	return (binary);
-
-
-
-}       
-        for (j = 0; j < i / 2; j++)
-        {
-                temp = s[j];
-                s[j] = s[i - j - 1];
-                s[i - j - 1] = temp;
-        }
-        return (s);
 }
