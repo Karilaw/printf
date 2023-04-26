@@ -128,6 +128,29 @@ int _printf(const char *format, ...)
                 }
                 free(binary_num);
             }
+
+	    else if (*format == 'S')
+	    {	
+		    s = va_arg(args, char *);
+
+		    while (*s)
+		    {	
+			    if (*s < 32 || *s >= 127)
+			    {	
+				    putchar('\\');
+				    putchar('x');
+				    putchar((*s / 16) + '0');
+				    putchar((*s % 16) + '0');
+			    }
+			    else
+			    {	
+				    putchar(*s);
+			    }
+			    counter++;
+			    s++;
+		    }
+
+	    }
             else
             {
                 putchar('%');
