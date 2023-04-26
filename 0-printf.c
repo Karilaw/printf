@@ -103,15 +103,16 @@ int _printf(const char *format, ...)
             }
             else if (*format == 'p')
             {
-                void *ptr = va_arg(args, void *);
-                char *mem_add = _uitoa_base((unsigned long int)ptr, 16);
+                char hexa_digits[] = "0123456789abcdef";
+                unsigned long int ptr = (unsigned long int)va_arg(args, void *);
+		int i;
 
                 putchar('0');
                 putchar('x');
                 counter += 2;
-                for (i = 0; mem_add[i]; i++)
+                for (i = (sizeof(ptr) * 8) - 4; i >= 0; i -= 4)
                 {
-                    putchar(mem_add[i]);
+                    putchar(hexa_digits[(ptr >> i) & 0xf]);
                     counter++;
                 }
             }
@@ -143,6 +144,7 @@ int _printf(const char *format, ...)
 				    putchar('x');
 				    putchar(hexa_digits[*s / 16]);
 				    putchar(hexa_digits[*s %  16]);
+				    counter += 4;
 			    }
 			    else
 			    {	
