@@ -119,7 +119,7 @@ int _printf(const char *format, ...)
             else if (*format == 'b')
             {
                 unsigned int b = va_arg(args, unsigned int);
-                char *binary_num = conv_to_binary(b);
+                char *binary_num =  conv_to_binary(b);
 
                 for (i = 0; binary_num[i]; i++)
                 {
@@ -131,6 +131,8 @@ int _printf(const char *format, ...)
 
 	    else if (*format == 'S')
 	    {	
+		    char hexa_digits[] = "0123456789ABCDEF";
+
 		    s = va_arg(args, char *);
 
 		    while (*s)
@@ -139,8 +141,8 @@ int _printf(const char *format, ...)
 			    {	
 				    putchar('\\');
 				    putchar('x');
-				    putchar((*s / 16) + '0');
-				    putchar((*s % 16) + '0');
+				    putchar(hexa_digits[*s / 16]);
+				    putchar(hexa_digits[*s %  16]);
 			    }
 			    else
 			    {	
